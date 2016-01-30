@@ -7,13 +7,12 @@ import App from './component/app.js';
 import reducers from './reducers';
 
 const store = createStore(
-    reducers,
-    applyMiddleware()
+    reducers
 );
 
 render(
     <Provider store={store}>
-        <App />,
+        <App />
     </Provider>,
     document.getElementById('root')
 );
