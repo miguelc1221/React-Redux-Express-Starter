@@ -2,8 +2,9 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import { Route, browserHistory } from 'react-router';
 
-import App from './component/app.js';
+import routes from './routes.js';
 import reducers from './reducers';
 
 const store = createStore(
@@ -12,7 +13,7 @@ const store = createStore(
 
 render(
     <Provider store={store}>
-        <App />
+        <Route history={browserHistory} routes={routes}/>
     </Provider>,
     document.getElementById('root')
 );
