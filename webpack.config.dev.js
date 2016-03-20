@@ -13,7 +13,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: '/static/'
+        publicPath: '/dist/'
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
@@ -35,6 +35,9 @@ module.exports = {
         ]
     },
     postcss: function() {
-        return [autoprefixer,precss];
+        return [
+            autoprefixer({ browsers: ['last 2 versions'] }),
+            precss
+        ];
     }
 };

@@ -12,9 +12,9 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: '/static/'
+        publicPath: '/dist/'
     },
-  plugins: [
+    plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
@@ -27,23 +27,26 @@ module.exports = {
             }
         }),
         new ExtractTextPlugin('styles.css', { allChunks: true })
-  ],
-  resolve: {
-      extensions: ['', '.js', '.jsx']
-  },
-  module: {
-      loaders: [
-          {
-              test: /\.jsx?$/,
-              exclude: /node_modules/,
-              loaders: ['babel']
-          }, {
-              test: /\.css$/,
-              loader: ExtractTextPlugin.extract('style', 'css-loader!postcss-loader'),
-          }
-      ]
+    ],
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                loaders: ['babel']
+            }, {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract('style', 'css-loader!postcss-loader'),
+            }
+        ]
     },
     postcss: function() {
-        return [autoprefixer,precss];
+        return [
+            autoprefixer({ browsers: ['last 2 versions'] }),
+            precss
+        ];
     }
 };
