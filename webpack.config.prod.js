@@ -2,7 +2,6 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var autoprefixer = require('autoprefixer');
-var precss = require('precss');
 
 module.exports = {
     devtool: 'source-map',
@@ -36,16 +35,18 @@ module.exports = {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 loaders: ['babel']
-            }, {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style', 'css-loader!postcss-loader'),
+            },{
+                test: /\.(scss|css)$/,
+                loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[local]_[hash:base64:5]!postcss-loader!sass-loader'),
+            },{
+                test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+                loader: 'file-loader'
             }
         ]
     },
     postcss: function() {
         return [
             autoprefixer({ browsers: ['last 2 versions'] }),
-            precss
         ];
     }
 };
