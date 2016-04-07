@@ -18,9 +18,14 @@ module.exports = {
         new webpack.NoErrorsPlugin()
     ],
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['', '.js', '.jsx'],
+        alias: {
+          'sinon': 'sinon/pkg/sinon'
+        }
     },
     module: {
+        // don't run babel-loader through the sinon module
+        noParse: [/node_modules\/sinon\//],
         loaders: [
             {
                 test: /\.jsx?$/,
@@ -34,6 +39,13 @@ module.exports = {
                 loader: 'file-loader'
             }
         ]
+    },
+    // required for enzyme to work properly
+    externals: {
+    'jsdom': 'window',
+    'cheerio': 'window',
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': 'window'
     },
     postcss: function() {
         return [
