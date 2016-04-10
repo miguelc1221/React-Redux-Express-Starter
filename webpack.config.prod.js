@@ -6,10 +6,10 @@ var autoprefixer = require('autoprefixer');
 module.exports = {
     devtool: 'source-map',
     entry: [
-        './src/index'
+        './app/index'
     ],
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, '/app/build'),
         filename: 'bundle.js'
     },
     plugins: [

@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Starter package for React/React-Router/Redux/Express",
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf app/build",
     "build:webpack": "NODE_ENV=production webpack -p --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
-    "start": "node server.js",
+    "start": "node server/server.js",
     "lint": "eslint src",
     "mocha": "NODE_ENV=production mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive",
     "mocha:watch": "npm run mocha -- --watch",
