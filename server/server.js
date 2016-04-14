@@ -1,7 +1,7 @@
-const path = require('path');
-const express = require('express');
-const webpack = require('webpack');
-const config = require('../webpack.config.dev');
+import path from 'path';
+import express from 'express';
+import webpack from 'webpack';
+import config from '../webpack.config.dev.js';
 
 const app = express();
 const compiler = webpack(config);
@@ -17,10 +17,10 @@ if (!isProduction) {
     app.use(require('webpack-hot-middleware')(compiler));
 }
 
-app.use(express.static(path.join(__dirname, '/../app')));
+app.use(express.static(path.join(__dirname, '/../app/public')));
 
 app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, '/../app/index.html'));
+    res.sendFile(path.join(__dirname, '/../app/public/index.html'));
 });
 
 app.listen(3000, 'localhost', function(err) {
