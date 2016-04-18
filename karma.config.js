@@ -8,7 +8,7 @@ module.exports = function(config) {
     browsers: ['PhantomJS'],
 
     // just run once by default unless --watch flag is passed
-    singleRun: argv.watch ? false : true,      
+    singleRun: argv.watch ? false : true,
 
     // which karma frameworks do we want integrated
     frameworks: ['mocha', 'chai'],
