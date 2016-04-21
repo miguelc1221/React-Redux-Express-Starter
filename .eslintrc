@@ -1,5 +1,4 @@
 {
-  "extends": "airbnb",
   "ecmaFeatures": {
     "jsx": true,
     "modules": true
@@ -10,7 +9,10 @@
     "mocha": true
   },
   "parser": "babel-eslint",
-  "rules": {},
+  "rules": {
+    "babel/object-shorthand": 1,
+    "babel/arrow-parens": 1,
+  },
   "plugins": [
     "babel",
     "react"
