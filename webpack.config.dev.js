@@ -33,14 +33,14 @@ module.exports = {
                 loaders: ['babel']
             }, {
                 test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-                loader: 'file-loader'
+                loader: 'url-loader?limit=9999999'
             }, {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                loaders: ['style?sourceMap','css?modules&importLoaders=1&localIdentName=[local]_[hash:base64:5]','postcss', 'sass']
-            }, { 
-                test: /\.css$/, 
-                loader: 'style!css!postcss' 
+                loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap']
+            }, {
+                test: /\.css$/,
+                loader: 'style!css!postcss'
             }
         ]
     },

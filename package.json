@@ -39,11 +39,11 @@
     "postcss": "^5.0.21",
     "postcss-loader": "^0.9.1",
     "react-addons-test-utils": "^15.0.2",
-    "react-css-modules": "^3.7.6",
     "rimraf": "^2.5.2",
     "sass-loader": "^3.2.0",
     "sinon": "^1.17.4",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
     "webpack": "^1.13.0",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"

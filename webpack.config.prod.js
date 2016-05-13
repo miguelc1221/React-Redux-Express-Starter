@@ -37,10 +37,10 @@ module.exports = {
                 loaders: ['babel']
             }, {
                 test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-                loader: 'file-loader'
+                loader: 'url-loader?limit=1000'
             }, {
                 test: /\.(scss|css)$/,
-                loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[local]_[hash:base64:5]!postcss-loader!sass-loader'),
+                loader: ExtractTextPlugin.extract('style', 'css!postcss-loader!sass-loader'),
             }
         ]
     },
