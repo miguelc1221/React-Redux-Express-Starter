@@ -5,7 +5,7 @@ const autoprefixer = require('autoprefixer');
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
     entry: [
-        'webpack-hot-middleware/client',
+        'webpack-hot-middleware/client?reload=true',
         './app/index'
     ],
     output: {
@@ -19,37 +19,16 @@ module.exports = {
     ],
     resolve: {
         extensions: ['', '.js', '.jsx'],
-        alias: {
-          'sinon': 'sinon/pkg/sinon'
-        }
     },
     module: {
-        // don't run babel-loader through the sinon module
-        noParse: [/node_modules\/sinon\//],
         loaders: [
-            {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loaders: ['babel']
-            }, {
-                test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-                loader: 'url-loader?limit=9999999'
-            }, {
-                test: /\.scss$/,
-                exclude: /node_modules/,
-                loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap']
-            }, {
-                test: /\.css$/,
-                loader: 'style!css!postcss'
-            }
+            { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel'] },
+            { test: /\.scss$/, exclude: /node_modules/, loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap'] },
+            { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
+            { test: /\.(woff|woff2)$/, loader: "url?prefix=font/&limit=5000" },
+            { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
+            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" }
         ]
-    },
-    // required for enzyme to work properly
-    externals: {
-        'jsdom': 'window',
-        'cheerio': 'window',
-        'react/lib/ExecutionEnvironment': true,
-        'react/lib/ReactContext': 'window'
     },
     postcss: function() {
         return [
