@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export default class App extends Component {
-    render() {
-        return (
-            <div>
-                React Boilerplate
-                {this.props.children}
-            </div>
-        )
-    }
+  render () {
+    return (
+      <div>
+        React Boilerplate
+        {this.props.children}
+      </div>
+    )
+  }
 }
