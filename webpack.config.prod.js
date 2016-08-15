@@ -28,8 +28,7 @@ module.exports = {
     }),
     new ExtractTextPlugin('styles.css', {
       allChunks: true
-    }),
-    new CompressionPlugin()
+    })
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']
